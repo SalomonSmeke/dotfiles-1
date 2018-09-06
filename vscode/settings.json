@@ -1,0 +1,27 @@
+{
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Hasklig",
+  "editor.tabSize": 2,
+  "editor.fontLigatures": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "Dracula",
+  "workbench.activityBar.visible": false,
+  "ruby.lint": {
+      "ruby": true
+  },
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "window.restoreWindows": "all",
+  "files.hotExit": "onExitAndWindowClose",
+  "workbench.statusBar.feedback.visible": false,
+  "terraform.path": "/usr/local/bin/terraform",
+  "terraform.lintPath": "/usr/local/bin/tflint",
+  "ruby.interpreter.commandPath": "/Users/joshsymonds/.rbenv/shims/ruby",
+  "telemetry.enableTelemetry": false,
+  "window.zoomLevel": 0,
+  "files.trimTrailingWhitespace": true,
+  "workbench.action.minimizeOtherEditors": true,
+  "[terraform]": {
+      "editor.formatOnSave": true
+  }
+}
