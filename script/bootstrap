@@ -151,7 +151,19 @@ install_kitty () {
 install_tmux() {
   info 'installing tmux'
 
-  link_file "$DOTFILES_ROOT/tmux/tmux.conf" "${HOME}/.tmux.conf"
+  if [ -f "${HOME}/.tmux.conf" ]
+  then
+    success "tmux conf installed"
+  else
+    link_file "$DOTFILES_ROOT/tmux/tmux.conf" "${HOME}/.tmux.conf"
+  fi
+
+  if [ -f "${HOME}/yank.sh" ]
+  then
+    success "yank installed"
+  else
+    link_file "$DOTFILES_ROOT/tmux/yank.sh" "${HOME}/yank.sh"
+  fi
 
   cd $DOTFILES_ROOT
 }
