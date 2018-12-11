@@ -14,10 +14,10 @@ copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback")
 
 # Resolve copy backend: pbcopy (OSX), reattach-to-user-namespace (OSX), xclip/xsel (Linux)
 copy_backend=""
-if is_app_installed pbcopy; then
-  copy_backend="pbcopy"
-elif is_app_installed reattach-to-user-namespace; then
+if is_app_installed reattach-to-user-namespace; then
   copy_backend="reattach-to-user-namespace pbcopy"
+elif is_app_installed pbcopy; then
+  copy_backend="pbcopy"
 elif [ -n "${DISPLAY-}" ] && is_app_installed xsel; then
   copy_backend="xsel -i --clipboard"
 elif [ -n "${DISPLAY-}" ] && is_app_installed xclip; then
@@ -55,7 +55,7 @@ fi
 
 # build up OSC 52 ANSI escape sequence
 esc="\033]52;c;$( printf %s "$buf" | head -c $maxlen | base64 | tr -d '\r\n' )\a"
-esc="\033Ptmux;\033$esc\033\\"
+esc="\033Ptmux;\033\033]52;c;!\a\033\\\033Ptmux;\033$esc\033\\"
 
 # resolve target terminal to send escape sequence
 # if we are on remote machine, send directly to SSH_TTY to transport escape sequence
